@@ -1,0 +1,5 @@
+# ignore file
+*venv/
+*.idea/
+*__pycache__/
+

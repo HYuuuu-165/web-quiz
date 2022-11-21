@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Intro {% endblock %}
+{% block content %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li>{{ message | safe }}</li
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	<h1>Your info</h1>
+{% endblock %}
