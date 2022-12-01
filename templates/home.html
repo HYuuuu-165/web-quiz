@@ -1,36 +1,46 @@
 {% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        div#quiz-boxes {
+                margin: 3%;
+                margin-left:10%;
+                margin-right: 10%;
+                }
+        li.list-group-item:hover {
+                background-color:lightgrey;
+                }
+    </style>
+{% endblock %}
+
 {% block content %}
-	<p>The timer block</p>
-	<h1 id="title">quiz topic</h1>
+    <!-- make question container -->
+    {% for i in quizs %}
+        <div id = 'quiz-boxes' class="card" style="width: auto;">
+            <div id="{{i[1]}}" class="card-header" >
+                Question {{quizs.index(i)+1}} : {{i[1]}}
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for e in options if e[0] == i[0] %}
+                    {% for x in e if e.index(x) != 0 %}
+                        {# SyntaxError: missing ) after argument list #}
+                            <li id="{{x}}" class="list-group-item" onclick = "judge({{e[0]}}, '{{x}}' )"> {{x}} </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
 
-	<!-- make question container -->
-	<div id="container">
-    		<div class="questions">
-        	<h2 id="question"></h2>
-        	<!-- An ordered list of items with number -->
-        	<ol type="A">
-            		<li class="option"><span id="option0" onclick="scoring(this)"></span></li>
-            		<li class="option"><span id="option1" onclick="scoring(this)"></span></li>
-            		<li class="option"><span id="option2" onclick="scoring(this)"></span></li>
-            		<li class="option"><span id="option3" onclick="scoring(this)"></span></li>
-        	</ol>
-        	<h4 id="stage"></h4>
-    		</div>
+<script>
+    //change color after click, one choice, change answer
+    function judge(quiz_index,choice){
+        if(flags.selected == false){
+            li = document.getElementById(choice);
+            li.style.backgroundColor = 'lightblue';
+            flags.selected == true;
+        }
+        console.log(li);
+    }
+</script>
 
-    		<div class="buttons">
-        		<button type="button" class="next">Next</button>
-    		</div>
-	</div>
-
-	<!-- show score -->
-	<div id="scoreboard">
-    		<h2 id="score-title">Your Score</h2>
-    		<h2 id="score"></h2>
-    		<!-- HTML buttons -->
-    		<button type="button" id="Restart" onclick="backToQuiz()">Restart</button>
-    		<!-- <button onclick="window.location.href='answer.html';">See answer</button> -->
-	</div>
-
-	<!-- call javascript file -->
-        <script src='{{url_for('static', filename='quiz.js')}}'></script>
 {% endblock %}

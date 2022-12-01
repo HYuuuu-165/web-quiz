@@ -1,21 +1,155 @@
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template, flash, g, session
+import configparser
+import logging
+from logging.handlers import RotatingFileHandler
+import sqlite3
+from functools import wraps
+import random
 
 app = Flask(__name__)
 
 
+# config
+def init(app):
+    config = configparser.ConfigParser()
+    try:
+        config_location = 'etc/defaults.cfg'
+        config.read(config_location)
+
+        app.config['SECRET_KEY'] = config.get('config', 'SECRET_KEY')
+
+        app.config['DEBUG'] = config.get('config', 'debug')
+        app.config['ip_address'] = config.get('config', 'ip_address')
+        app.config['url'] = config.get('config', 'url')
+
+        app.config['log_file'] = config.get('logging', 'name')
+        app.config['log_location'] = config.get('logging', 'location')
+        app.config['log_level'] = config.get('logging', 'level')
+
+        app.config['db_location'] = config.get('quiz_db', 'location')
+    except:
+        print("Couldn't read configs from: ", config_location)
+
+
+# logging
+def logs(app):
+    log_pathname = app.config['log_location'] + app.config['log_file']
+    file_handler = RotatingFileHandler(log_pathname, maxBytes=1024 * 1024 * 10, backupCount=1024)
+    file_handler.setLevel(app.config['log_level'])
+    formatter = logging.Formatter('%(levelname)s | %(asctime)s | %(module)s | %(funcName)s | %(message)s')
+    file_handler.setFormatter(formatter)
+    app.logger.setLevel(app.config['log_level'])
+    app.logger.addHandler(file_handler)
+
+
+init(app)
+logs(app)
+
+
+# database
+def get_db():
+    connection = sqlite3.connect('var/quiz.db')
+    cursor = connection.cursor()
+    location = app.config['db_location']
+    with app.app_context():
+        db = getattr(g, 'db', None)
+        if db is None:
+            db = sqlite3.connect(location)
+            g.db = db
+
+            # table 1: quiz
+            cursor.execute('drop table if exists quiz')
+            cursor.execute('create table quiz (id int, question text, answer text)')
+            release_list_1 = [(1, 'question1', 'answer1'),
+                              (2, 'question2', 'answer2'),
+                              (3, 'question3', 'answer3'),
+                              (4, 'question4', 'answer4'),
+                              (5, 'question5', 'answer5'),
+                              (6, 'question6', 'answer6'),
+                              (7, 'question7', 'answer7'),
+                              (8, 'question8', 'answer8'),
+                              (9, 'question9', 'answer9'),
+                              (10, 'question10', 'answer10')]
+
+            cursor.executemany('insert into quiz values (?, ?, ?)', release_list_1)
+
+            # table 2:options
+            cursor.execute('drop table if exists options')
+            cursor.execute('create table options (id int, option_1 text, option_2 text, option_3 text, option_4 text)')
+            release_list_2 = [(1, '1.1', '1.2', '1.3', '1.4'),
+                              (2, '2.1', '2.2', '2.3', '2.4'),
+                              (3, '3.1', '3.2', '3.3', '3.4'),
+                              (4, '4.1', '4.2', '4.3', '4.4'),
+                              (5, '5.1', '5.2', '5.3', '5.4'),
+                              (6, '6.1', '6.2', '6.3', '6.4'),
+                              (7, '7.1', '7.2', '7.3', '7.4'),
+                              (8, '8.1', '8.2', '8.3', '8.4'),
+                              (9, '9.1', '9.2', '9.3', '9.4'),
+                              (10, '10.1', '10.2', '10.3', '10.4'), ]
+            cursor.executemany('insert into options values (?, ?, ?, ?, ?)', release_list_2)
+
+            connection.commit()
+            cursor.execute('select * from quiz')
+            data_quiz = cursor.fetchall()
+            cursor.execute('select * from options')
+            data_options = cursor.fetchall()
+
+    return data_quiz, data_options
+
+
+# close db
+@app.teardown_appcontext
+def close_db_connection(exception):
+    db = getattr(g, 'db', None)
+    if db is not None:
+        db.close()
+
+
+# quiz
+# intro page
 @app.route('/')
 def info():
+    # check config
+    print(app.config['SECRET_KEY'])
+    this_route = url_for('info')
+    app.logger.info('log info: ' + this_route)
     return render_template('info.html')
 
 
+@app.route('/start_quiz', methods=['POST'])
+def start_quiz():
+    print('button pressed')
+    return redirect(url_for('.home'))
+
+
+# quiz page
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    data_question, data_options = get_db()
+
+    # random question and show 5
+    quizs = random.sample(data_question, 5)
+    ordered_options = []
+    for q in quizs:
+        for o in data_options:
+            if q[0] == o[0]:
+                ordered_options.append(o)
+
+    # random options
+    options = []
+    for i in ordered_options:
+        new_op = [i[0]]
+        ops = i[1:10]
+        new_op += random.sample(ops, 4)
+        options.append(new_op)
+
+    # return options
+    return render_template('home.html', quizs=quizs, options=options)
 
 
-@app.route('/timeout')
-def timeout():
-    return render_template('timeout.html')
+@app.route('/home/<e>/<x>', methods=['POST', 'GET'])
+def judge(e, x):
+    print(x)
 
 
 @app.route('/leaderboard')
@@ -28,64 +162,7 @@ def page_not_find(error):
     return 'Opps, page you requested is not exsit yet', 404
 
 
-"""
-@app.route('/a')
-def a():
-	return redirect(url_for('hello_world'))
-
-@app.route('/b')
-def b():
-	start = '<img src = "'
-	end = '">'
-	url = url_for('static', filename = 'vmask.jpg')
-	return start+url+end, 200
-
-@app.route('/c', methods = ['GET', 'POST'])
-def c():
-	if request.method == 'GET': 
-		page = '''
-		<html><body>
-			<form action = '' method = 'POST' name = 'form'>
-			<label for='name'>Name:<label>
-			<input type = 'text' name = 'name' id = 'name'/>
-			<input type = 'submit' name = 'submit' id = 'submit'/>
-			</form>
-		</body></html>
-		'''
-		return page
-	else: 
-		print(request.form)
-		name = request.form['name']
-		return 'Hello ' +  name
-
-@app.route('/')
-@app.route('/d/<name>') #construct page with variables
-def d(name=None): 
-	return render_template('hello.html', name = name)
-
-@app.route('/e/') #construct html with parameters
-def e():
-	name = request.args.get('name','an alter one when name is not provide')
-	return 'Hello %s' %name
-
-@app.route('/f/', methods = ['GET', 'POST']) # get files than para/vari
-def f():
-	if request.method == 'POST':
-		f = request.files['datafile']
-		print(f)
-		f.save('static/uploads/upload.png')
-		return 'File Uploaded'
-	else: 
-		page='''
-			<html><body>
-				<form action = '' method = 'post' name = 'form' enctype = 'multipart/form-data'>
-				<input type = 'file' name = 'datafile'/>
-				<input type = 'submit' name = 'submit' id = 'submit'/>
-				</form>
-			</body></html>
-			'''
-		return page, 200
-
+# run
 if __name__ == '__main__':
-	app.run(host = '0.0.0.0', debug = True)
-"""
+    init(app)
+    app.run()

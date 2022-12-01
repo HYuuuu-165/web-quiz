@@ -1,0 +1,209 @@
+INFO | 2022-11-29 16:06:30,292 | main | info | log info: /
+INFO | 2022-11-29 16:06:33,220 | main | info | log info: /
+ERROR | 2022-11-29 16:06:34,391 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 129, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 90, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ? ,?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-11-29 16:08:16,655 | main | info | log info: /
+ERROR | 2022-11-29 16:08:18,859 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 129, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 90, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ? ,?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-11-29 16:08:24,384 | main | info | log info: /
+INFO | 2022-11-29 16:08:25,217 | main | info | log info: /
+INFO | 2022-11-29 16:15:32,398 | main | info | log info: /
+INFO | 2022-11-29 16:15:34,819 | main | info | log info: /
+ERROR | 2022-11-29 16:15:36,181 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 129, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 90, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ? ,?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-11-29 16:15:38,240 | main | info | log info: /
+INFO | 2022-11-29 16:15:40,931 | main | info | log info: /
+ERROR | 2022-11-29 16:15:41,005 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 129, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 90, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ? ,?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-11-29 16:15:41,595 | main | info | log info: /
+INFO | 2022-12-01 13:15:30,612 | main | info | log info: /
+INFO | 2022-12-01 13:15:32,224 | main | info | log info: /
+ERROR | 2022-12-01 13:15:33,289 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ? ,?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-12-01 13:16:47,015 | main | info | log info: /
+INFO | 2022-12-01 13:16:48,128 | main | info | log info: /
+ERROR | 2022-12-01 13:16:48,863 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?)', release_list_2)
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 3, and there are 5 supplied.
+INFO | 2022-12-01 13:17:20,653 | main | info | log info: /
+ERROR | 2022-12-01 13:17:21,857 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ?, ?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-12-01 13:17:45,998 | main | info | log info: /
+ERROR | 2022-12-01 13:17:47,667 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 74, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ?, ?)', release_list_1)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-12-01 13:27:40,941 | main | info | log info: /
+ERROR | 2022-12-01 13:27:42,332 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?, ?, ?)', release_list_2)
+sqlite3.OperationalError: table quiz has 3 columns but 5 values were supplied
+INFO | 2022-12-01 13:31:48,579 | main | info | log info: /
+ERROR | 2022-12-01 13:31:49,854 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into quiz values (?, ?, ?)', release_list_2)
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 3, and there are 5 supplied.
+INFO | 2022-12-01 13:36:11,029 | main | info | log info: /
+ERROR | 2022-12-01 13:36:12,062 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into option values (?, ?, ?)', release_list_2)
+sqlite3.OperationalError: no such table: option
+INFO | 2022-12-01 13:36:29,804 | main | info | log info: /
+ERROR | 2022-12-01 13:36:31,223 | app | log_exception | Exception on /home [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 128, in home
+    data_question, data_options = get_db()
+  File "D:\Napier\web quiz\main.py", line 89, in get_db
+    cursor.executemany('insert into option values (?, ?, ?, ?, ?)', release_list_2)
+sqlite3.OperationalError: no such table: option
+INFO | 2022-12-01 13:36:49,296 | main | info | log info: /
+INFO | 2022-12-01 13:40:07,368 | main | info | log info: /
+INFO | 2022-12-01 13:40:09,214 | main | info | log info: /
+INFO | 2022-12-01 13:42:15,492 | main | info | log info: /
+INFO | 2022-12-01 13:42:17,932 | main | info | log info: /
+INFO | 2022-12-01 13:47:45,135 | main | info | log info: /
+INFO | 2022-12-01 13:47:46,628 | main | info | log info: /
+INFO | 2022-12-01 13:47:53,004 | main | info | log info: /
+INFO | 2022-12-01 13:47:53,344 | main | info | log info: /
