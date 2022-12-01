@@ -3,27 +3,26 @@
 {% block head %}
     <style>
         div#quiz-boxes {
-                margin: 3%;
-                margin-left:10%;
-                margin-right: 10%;
+                margin: 10%
                 }
         li.list-group-item:hover {
                 background-color:lightgrey;
                 }
     </style>
+    <script>
+    </script>
 {% endblock %}
 
 {% block content %}
     <!-- make question container -->
     {% for i in quizs %}
-        <div id = 'quiz-boxes' class="card" style="width: auto;">
+        <div id = 'quiz-boxes' class="card" style="width: auto; margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 2%">
             <div id="{{i[1]}}" class="card-header" >
                 Question {{quizs.index(i)+1}} : {{i[1]}}
             </div>
             <ul class="list-group list-group-flush">
                 {% for e in options if e[0] == i[0] %}
                     {% for x in e if e.index(x) != 0 %}
-                        {# SyntaxError: missing ) after argument list #}
                             <li id="{{x}}" class="list-group-item" onclick = "judge({{e[0]}}, '{{x}}' )"> {{x}} </li>
                     {% endfor %}
                 {% endfor %}
@@ -32,15 +31,8 @@
     {% endfor %}
 
 <script>
-    //change color after click, one choice, change answer
-    function judge(quiz_index,choice){
-        if(flags.selected == false){
-            li = document.getElementById(choice);
-            li.style.backgroundColor = 'lightblue';
-            flags.selected == true;
-        }
-        console.log(li);
-    }
+    //interact click choose true wrong
+
 </script>
 
 {% endblock %}

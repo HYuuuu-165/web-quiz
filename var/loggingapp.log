@@ -207,3 +207,44 @@ INFO | 2022-12-01 13:47:45,135 | main | info | log info: /
 INFO | 2022-12-01 13:47:46,628 | main | info | log info: /
 INFO | 2022-12-01 13:47:53,004 | main | info | log info: /
 INFO | 2022-12-01 13:47:53,344 | main | info | log info: /
+INFO | 2022-12-01 15:17:13,959 | main | info | log info: /
+INFO | 2022-12-01 15:17:16,913 | main | info | log info: /
+INFO | 2022-12-01 15:18:23,491 | main | info | log info: /
+INFO | 2022-12-01 15:18:23,921 | main | info | log info: /
+INFO | 2022-12-01 15:18:57,143 | main | info | log info: /
+INFO | 2022-12-01 15:20:15,388 | main | info | log info: /
+INFO | 2022-12-01 15:38:57,735 | main | info | log info: /
+INFO | 2022-12-01 15:38:58,607 | main | info | log info: /
+ERROR | 2022-12-01 16:16:24,610 | app | log_exception | Exception on /leaderboard [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Napier\web quiz\main.py", line 157, in leaderboard
+    return render_template('leaderboard.html')
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "D:\Napier\web quiz\venv\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "D:\Napier\web quiz\venv\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "D:\Napier\web quiz\venv\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "D:\Napier\web quiz\venv\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\templating.py", line 62, in get_source
+    return self._get_source_fast(environment, template)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: leaderboard.html
+INFO | 2022-12-01 16:16:29,696 | main | info | log info: /
+INFO | 2022-12-01 16:17:21,791 | main | info | log info: /
+INFO | 2022-12-01 16:19:50,324 | main | info | log info: /
+INFO | 2022-12-01 16:26:39,035 | main | info | log info: /
+INFO | 2022-12-01 16:26:40,082 | main | info | log info: /
+INFO | 2022-12-01 16:26:58,947 | main | info | log info: /

@@ -1,9 +1,8 @@
-from flask import Flask, redirect, url_for, request, render_template, flash, g, session
+from flask import Flask, redirect, url_for, render_template, g
 import configparser
 import logging
 from logging.handlers import RotatingFileHandler
 import sqlite3
-from functools import wraps
 import random
 
 app = Flask(__name__)
@@ -106,7 +105,7 @@ def close_db_connection(exception):
 
 
 # quiz
-# intro page
+# intro page-info.html, also start page
 @app.route('/')
 def info():
     # check config
@@ -127,7 +126,7 @@ def start_quiz():
 def home():
     data_question, data_options = get_db()
 
-    # random question and show 5
+    # random all question and show 5 each time
     quizs = random.sample(data_question, 5)
     ordered_options = []
     for q in quizs:
@@ -135,7 +134,7 @@ def home():
             if q[0] == o[0]:
                 ordered_options.append(o)
 
-    # random options
+    # random options order match question id
     options = []
     for i in ordered_options:
         new_op = [i[0]]
@@ -152,11 +151,7 @@ def judge(e, x):
     print(x)
 
 
-@app.route('/leaderboard')
-def leaderboard():
-    return render_template('leaderboard.html')
-
-
+# error page
 @app.errorhandler(404)
 def page_not_find(error):
     return 'Opps, page you requested is not exsit yet', 404
