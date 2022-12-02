@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <style>
-        div#quiz-boxes {
-                margin: 10%
-                }
-        li.list-group-item:hover {
-                background-color:lightgrey;
-                }
-    </style>
-    <script>
-    </script>
 {% endblock %}
 
 {% block content %}
+    <!-- hover change color -->
+    <style>
+        .list-group-item:hover {
+                cursor:pointer;
+                color:white;
+                background-color:green;
+                }
+    </style>
     <!-- make question container -->
     {% for i in quizs %}
         <div id = 'quiz-boxes' class="card" style="width: auto; margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 2%">
@@ -30,9 +28,26 @@
         </div>
     {% endfor %}
 
+    <!-- submit -->
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="w-100 btn btn-lg btn-outline-primary" type="submit">
+            <a href="/score" style="color:inherit"> Submit </a>
+        </button>
+    </div>
 <script>
-    //interact click choose true wrong
+    //single choice
+    function select(){
 
+    }
+    //interact click choose true wrong
+    function judge(quiz_index,choice){
+        if(flags.selected === false){
+            li = document.getElementById(choice);
+            li.style.backgroundColor = 'lightblue';
+            flags.selected === true;
+        }
+        console.log(li);
+    }
 </script>
 
 {% endblock %}

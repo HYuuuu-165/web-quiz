@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
 {% block title %} Intro {% endblock %}
 {% block content %}
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			<ul>
-			{% for message in messages %}
-				<li>{{ message | safe }}</li
-			{% endfor %}
-			</ul>
-		{% endif %}
-	{% endwith %}
+<div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">How to quiz</h1>
+      <p class="lead my-3">
+          Welcome to this quiz where you will be tested some golf related knowledge.<br>
+          Please choose the choice you think is correct, only one will be correct.<br>
+          Quiz will be 5 question and randomized which means you'll get different one each time
+      </p >
+      <p class="lead mb-0"><a href="/home" class="text-white fw-bold">START QUIZ</a></p >
+    </div>
+</div>
 
-	<h1>Info here</h1>
+<div id = 'info-container' style = 'margin: 0 20%'>
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Background Reading ...
+    </h3>
+    <p>
+        Golf, is an outdoor sport. Individual or team players hole a small ball with a golf club,
+        and the player with the fewest strokes wins. Most tournaments have nine or eighteen holes.
+        At present, the more well-known individual competitions in the world are: British Open, British Amateur Golf Championship,
+        U.S. Open, U.S. Amateur Golf Championship, American Masters, PGA Championship. The most famous team competitions are the Golf World Cup,
+        the Ryder Cup Europe-America Tournament and the Walker Cup US-UK-Ireland Series. Golf will be re-listed as an
+        Olympic sport at the 2016 Rio de Janeiro Olympics. The British Open, the US Open, the US Masters, and the PGA Championship
+        are the four major championships in golf. It is generally believed that modern golf originated in Scotland in 1456,
+        and today's 18-hole golf system is also formulated by Scotland. There is also the oldest golf club in the world, which is regarded
+        as the quintessence of Scotland. Alan Shepard was the first person to play golf outside Earth, hauling a club and two balls aboard
+        during the Apollo 14 mission. Although the first ball was missed, the second ball is said to have hit 2 miles in low drag and
+        gravity conditions, the unofficial record for the longest tee shot.
+
+        <h6>Reference: https://en.wikipedia.org/wiki/Golf</h6>
+		<a href="https://en.wikipedia.org/wiki/Golf">Read more here</a>
+    </p>
+</div>
 {% endblock %}
