@@ -159,7 +159,7 @@ def submit():
     #大致想法
     # for q in quizes
     # q id from data = q id from home.html
-    # user choice = request.form[q_id]
+    # user choice (value) = request.form[q_id]
     # correct option = answer text in quiz data
     #
     #if user choice ==corect option:
