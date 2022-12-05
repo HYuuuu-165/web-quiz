@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, g
+from flask import Flask, redirect, url_for, render_template, g, request
 import configparser
 import logging
 from logging.handlers import RotatingFileHandler
@@ -147,14 +147,39 @@ def home():
 
 
 @app.route('/home/<e>/<x>', methods=['POST', 'GET'])
-def judge(e, x):
+def select(e, x):
     print(x)
+
+
+# submit quiz
+@app.route('/submitquiz', methods=['POST', 'GET'])
+def submit():
+    correct = 0
+
+    #大致想法
+    # for q in quizes
+    # q id from data = q id from home.html
+    # user choice = request.form[q_id]
+    # correct option = answer text in quiz data
+    #
+    #if user choice ==corect option:
+    # correct = correct + 1
+    # correct = int(correct)
+
+    return correct
+
+
+# score page
+@app.route('/score')
+def score():
+    return render_template('score.html')
+    # print correct
 
 
 # error page
 @app.errorhandler(404)
 def page_not_find(error):
-    return 'Opps, page you requested is not exsit yet', 404
+    return 'Opps, page you requested is not exsit yet, please return to previous page.', 404
 
 
 # run

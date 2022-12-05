@@ -1,53 +1,59 @@
 {% extends 'base.html' %}
-
+{% block title %} Quiz {% endblock %}
 {% block head %}
+
 {% endblock %}
 
 {% block content %}
     <!-- hover change color -->
     <style>
-        .list-group-item:hover {
-                cursor:pointer;
-                color:white;
-                background-color:green;
-                }
+        input[type='radio'] {
+            width: 20px;
+            height: 20px;
+            border: 2px solid grey;
+            border-radius: 50%;
+            outline: none;
+            opacity: 0.6;
+        }
+
+        input[type='radio']:hover {
+            box-shadow: 5px 5px 5px 5px green;
+            border-radius: 50%;
+            opacity: 1;
+        }
     </style>
+    <script>
+
+    </script>
     <!-- make question container -->
     {% for i in quizs %}
         <div id = 'quiz-boxes' class="card" style="width: auto; margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 2%">
             <div id="{{i[1]}}" class="card-header" >
-                Question {{quizs.index(i)+1}} : {{i[1]}}
+                Question {{quizs.index(i) + 1 }} : {{i[1]}}
             </div>
-            <ul class="list-group list-group-flush">
+            <form action="/submitquiz", method="POST">
                 {% for e in options if e[0] == i[0] %}
                     {% for x in e if e.index(x) != 0 %}
-                            <li id="{{x}}" class="list-group-item" onclick = "judge({{e[0]}}, '{{x}}' )"> {{x}} </li>
+                        <label>
+                            <input type="radio" class="choice" name="option" value="{{x}}">
+                        </label> {{x}} <br>
                     {% endfor %}
                 {% endfor %}
-            </ul>
+            </form>
         </div>
     {% endfor %}
 
-    <!-- submit -->
+    <!-- submit button-->
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="w-100 btn btn-lg btn-outline-primary" type="submit">
-            <a href="/score" style="color:inherit"> Submit </a>
+            <input type="submit" name="submitform" value="Submit">
+            <!-- send user choice to server and jump to score.html? -->
         </button>
     </div>
-<script>
-    //single choice
-    function select(){
 
-    }
-    //interact click choose true wrong
-    function judge(quiz_index,choice){
-        if(flags.selected === false){
-            li = document.getElementById(choice);
-            li.style.backgroundColor = 'lightblue';
-            flags.selected === true;
-        }
-        console.log(li);
-    }
+<script>
+
+
 </script>
 
 {% endblock %}
