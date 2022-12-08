@@ -56,35 +56,38 @@ def get_db():
             db = sqlite3.connect(location)
             g.db = db
 
-            # table 1: quiz
+            # table 1: quiz saved as (id, question, correct answer)
             cursor.execute('drop table if exists quiz')
             cursor.execute('create table quiz (id int, question text, answer text)')
-            release_list_1 = [(1, 'question1', 'answer1'),
-                              (2, 'question2', 'answer2'),
-                              (3, 'question3', 'answer3'),
-                              (4, 'question4', 'answer4'),
-                              (5, 'question5', 'answer5'),
-                              (6, 'question6', 'answer6'),
-                              (7, 'question7', 'answer7'),
-                              (8, 'question8', 'answer8'),
-                              (9, 'question9', 'answer9'),
-                              (10, 'question10', 'answer10')]
+            release_list_1 = [(1, 'In which year was the "18-hole" game created?', '1764'),
+                              (2, 'Which golf club is normally the longest? (without modification)', 'The 1-wood'),
+                              (3, 'In golf, par is the predetermined number of strokes that a proficient golfer '
+                                  'should require to complete a hole, you now finished a hole two strokes under the '
+                                  'par, what term should you use for your score?', 'Eagle'),
+                              (4, 'How many golf clubs can you take with you in a normal  match?', '14'),
+                              (5, 'Under what circumstances will a golfer be disqualified?', 'None of these'),
+                              (6, 'Where was the modern game of golf originated?', 'Scotland'),
+                              (7, 'Which of the following materials has never been used in the manufacture of golf '
+                                  'balls ', 'Aluminium'),
+                              (8, 'When did manufacturers start using metal for their clubs?', '1979'),
+                              (9, 'How grass is usually mowed on a modern greens', 'Shorter'),
+                              (10, 'Which is the oldest golf course in the world?', 'The Old Course')]
 
             cursor.executemany('insert into quiz values (?, ?, ?)', release_list_1)
 
-            # table 2:options
+            # table 2:options saved as (id, choice1, choice2, choice3, choice4)
             cursor.execute('drop table if exists options')
             cursor.execute('create table options (id int, option_1 text, option_2 text, option_3 text, option_4 text)')
-            release_list_2 = [(1, '1.1', '1.2', '1.3', '1.4'),
-                              (2, '2.1', '2.2', '2.3', '2.4'),
-                              (3, '3.1', '3.2', '3.3', '3.4'),
-                              (4, '4.1', '4.2', '4.3', '4.4'),
-                              (5, '5.1', '5.2', '5.3', '5.4'),
-                              (6, '6.1', '6.2', '6.3', '6.4'),
-                              (7, '7.1', '7.2', '7.3', '7.4'),
-                              (8, '8.1', '8.2', '8.3', '8.4'),
-                              (9, '9.1', '9.2', '9.3', '9.4'),
-                              (10, '10.1', '10.2', '10.3', '10.4'), ]
+            release_list_2 = [(1, '1764', '1874', '1648', '2000'),
+                              (2, 'The 1-wood', 'The 5-iron', 'The 9-iron', 'The Putter'),
+                              (3, 'Eagle', 'Birdie', 'Bogey', 'Albatross'),
+                              (4, '14', '6', '12', 'As many as you want'),
+                              (5, 'None of these', 'Making a stroke at the wrong ball', 'A lost ball or a ball hit out of bounds', 'Hitting a fellow player\'s ball if both balls lay on the green prior to the stroke'),
+                              (6, 'Scotland', 'USA', 'France', 'USSR'),
+                              (7, 'Aluminium', 'Feather', 'Resin', 'Polyurethane'),
+                              (8, '1979', '1879', '2000', '1890'),
+                              (9, 'Shorter', 'Longer', 'Same as everywhere else', 'Undulating'),
+                              (10, 'The Old Course', 'Mission Hills Golf Club', 'Musselburgh Links', 'Pinehurst Resort'), ]
             cursor.executemany('insert into options values (?, ?, ?, ?, ?)', release_list_2)
 
             connection.commit()
@@ -156,13 +159,15 @@ def select(e, x):
 def submit():
     correct = 0
 
-    #大致想法
+    # Difficulties encountered: Unable to get a valid user selection data and transfer from home.html to server side
+
+    # Ideas for scoring functions
     # for q in quizes
     # q id from data = q id from home.html
     # user choice (value) = request.form[q_id]
     # correct option = answer text in quiz data
     #
-    #if user choice ==corect option:
+    # if user choice ==corect option:
     # correct = correct + 1
     # correct = int(correct)
 

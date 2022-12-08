@@ -16,10 +16,21 @@
             opacity: 0.6;
         }
 
-        input[type='radio']:hover {
-            box-shadow: 5px 5px 5px 5px green;
+        input[type='radio']:hover:before {
+            box-shadow: 0px 0px 0px 12px #5050c8;
             border-radius: 50%;
             opacity: 1;
+        }
+
+        input[type='radio']:before {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 60%;
+            margin: 10%;
+            padding: 10%;
+            border-radius: 50%;
+            transition: 0.3s;
         }
     </style>
     <script>
@@ -31,7 +42,7 @@
             <div id="{{i[1]}}" class="card-header" >
                 Question {{quizs.index(i) + 1 }} : {{i[1]}}
             </div>
-            <form action="/submitquiz", method="POST">
+            <form action="/submitquiz" method="POST">
                 {% for e in options if e[0] == i[0] %}
                     {% for x in e if e.index(x) != 0 %}
                         <label>
@@ -46,13 +57,22 @@
     <!-- submit button-->
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="w-100 btn btn-lg btn-outline-primary" type="submit">
-            <input type="submit" name="submitform" value="Submit">
-            <!-- send user choice to server and jump to score.html? -->
+            <a href="/score" style="color:inherit"> Submit </a>
         </button>
     </div>
-
+    <!--
+    a attempt to return user selection
+    <form action="/submitquiz" method="get">
+        <input type="submit" name="submitquiz" value="Submit">
+    </form>
+    -->
 <script>
 
+<!--
+when hit submit button, return user selection to server side, Difficulties encountered: invalid data type
+console.log("option");
+document.querySelector('input[name="option"]:checked').value;
+-->
 
 </script>
 

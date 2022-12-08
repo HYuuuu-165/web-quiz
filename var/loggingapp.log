@@ -384,3 +384,29 @@ Traceback (most recent call last):
   File "D:\Napier\web quiz\venv\lib\site-packages\jinja2\environment.py", line 466, in getitem
     return obj[argument]
 jinja2.exceptions.UndefinedError: 'e' is undefined
+ERROR | 2022-12-06 11:31:17,783 | app | log_exception | Exception on /submitquiz [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1842, in finalize_request
+    response = self.make_response(rv)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2170, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, list, tuple with headers or status, Response instance, or WSGI callable, but it was a int.
+ERROR | 2022-12-06 15:04:40,460 | app | log_exception | Exception on /submitquiz [GET]
+Traceback (most recent call last):
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 1842, in finalize_request
+    response = self.make_response(rv)
+  File "D:\Napier\web quiz\venv\lib\site-packages\flask\app.py", line 2170, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, list, tuple with headers or status, Response instance, or WSGI callable, but it was a int.
+INFO | 2022-12-08 19:38:57,824 | main | info | log info: /
+INFO | 2022-12-08 19:40:00,485 | main | info | log info: /
+INFO | 2022-12-08 19:42:06,402 | main | info | log info: /
+INFO | 2022-12-08 19:47:31,831 | main | info | log info: /
